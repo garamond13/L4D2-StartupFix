@@ -3,10 +3,9 @@
 #pragma semicolon 1
 #pragma newdecls required
 
-#define VERSION "1.0.0"
+#define VERSION "1.1.0"
 
-// Max length of a game pathname.
-#define MAX_QPATH 96
+#define MAX_MAP_NAME 32
 
 public Plugin myinfo = {
 	name = "L4D2 StartupFix",
@@ -20,7 +19,7 @@ public void OnMapStart()
 {
 	static bool execute = true;
 	if (execute) {
-		char buffer[MAX_QPATH + 4];
+		char buffer[MAX_MAP_NAME + 4];
 		GetCurrentMap(buffer, sizeof(buffer));
 		PrintToServer("L4D2 StartupFix: Reloading map!");
 		Format(buffer, sizeof(buffer), "map %s", buffer);
